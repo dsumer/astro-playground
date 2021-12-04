@@ -38,6 +38,7 @@ export const {
     colors: {
       gray400: "gainsboro",
       gray500: "lightgray",
+      background: "yellow",
     },
   },
   media: {
@@ -50,5 +51,11 @@ export const {
   utils: {
     bg: responsiveValueMapper("background"),
     mx: (value: string) => ({ marginLeft: value, marginRight: value }),
+  },
+});
+
+export const darkTheme = createTheme("dark-theme", {
+  colors: {
+    background: "black",
   },
 });

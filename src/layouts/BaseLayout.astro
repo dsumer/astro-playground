@@ -1,9 +1,10 @@
 ---
 // Component Imports
-import { Style } from '../components/style';
+import { GlobalStyle } from '../components/global-style';
 import { Button } from '../components/button.tsx';
 import { Counter } from '../components/counter.tsx';
-import { Counter2 } from '../components/counter2.tsx'
+import { Counter2 } from '../components/counter2.tsx';
+import { darkTheme } from '../theme/stitches.config.ts';
 
 const someProps = {
     css: {
@@ -19,18 +20,23 @@ const someProps = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <Style></Style>
+    <GlobalStyle></GlobalStyle>
   </head>
-  <body>
+  <body class={darkTheme}>
+    <script>
+      if (localStorage.getItem('theme') !== 'dark') {
+        document.body.removeAttribute('class');
+      }
+    </script>
     <main>
         <slot />
         <Button {...someProps}>nice</Button>
         <div style="height: 2000px" />
-        <Counter count={0} client:visible>
+        <Counter count={0}>
             <h1>Hello, React!</h1>
         </Counter>
         <div style="height: 2000px" />
-        <Counter2 count={0} client:visible>
+        <Counter2 count={0}>
             <h1>Hello, React!</h1>
         </Counter2>
     </main>
